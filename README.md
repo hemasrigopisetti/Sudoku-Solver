@@ -129,5 +129,12 @@ POST /api/solve
 - Google Fonts — DM Serif Display + DM Mono
 
 ---
+<div align="center">
 
-*Made with 🐍 Python + ❤️ — Full-stack Sudoku project.*
+Made with ❤️ by **Hemasri Gopisetti** &copy; 2025
+
+*"Every great developer started with a simple game."*
+
+⭐ **Star this repo if you liked it!** ⭐
+
+</div>
