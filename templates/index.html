@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudoku</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Sudo<em>ku</em></h1>
+  <p>Python Flask Backend · Backtracking Algorithm</p>
+</header>
+
+<div class="app">
+  <div class="board-wrap">
+    <div class="board" id="board" tabindex="0"></div>
+    <div class="status" id="status">Loading puzzle...</div>
+  </div>
+
+  <div class="sidebar">
+
+    <div>
+      <div class="lbl">Timer</div>
+      <div class="timer-box">
+        <div class="time" id="timer">00:00</div>
+        <div class="tlbl">elapsed</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="lbl">Mistakes</div>
+      <div class="mbox" id="mbox">
+        <div class="hearts" id="hearts">❤️❤️❤️❤️</div>
+        <div class="mlbl"><span id="mcnt">0</span> / 4 wrong entries</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="lbl">Difficulty</div>
+      <div class="diff-group">
+        <button class="diff-btn active" data-diff="easy"   onclick="setDiff(this)">Easy   <span class="clues">46 clues</span></button>
+        <button class="diff-btn"        data-diff="medium" onclick="setDiff(this)">Medium <span class="clues">32 clues</span></button>
+        <button class="diff-btn"        data-diff="hard"   onclick="setDiff(this)">Hard   <span class="clues">26 clues</span></button>
+      </div>
+    </div>
+
+    <div>
+      <div class="lbl">Actions</div>
+      <div class="action-group">
+        <button class="btn primary" onclick="newGame()">New Puzzle</button>
+        <button class="btn"         onclick="autoSolve()">Auto Solve</button>
+        <button class="btn"         onclick="validateBoard()">Validate</button>
+        <button class="btn"         onclick="resetBoard()">Reset</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="lbl">Input</div>
+      <div class="numpad">
+        <button class="num-btn" onclick="typeNum(1)">1</button>
+        <button class="num-btn" onclick="typeNum(2)">2</button>
+        <button class="num-btn" onclick="typeNum(3)">3</button>
+        <button class="num-btn" onclick="typeNum(4)">4</button>
+        <button class="num-btn" onclick="typeNum(5)">5</button>
+        <button class="num-btn" onclick="typeNum(6)">6</button>
+        <button class="num-btn" onclick="typeNum(7)">7</button>
+        <button class="num-btn" onclick="typeNum(8)">8</button>
+        <button class="num-btn" onclick="typeNum(9)">9</button>
+        <button class="num-btn erase" onclick="typeNum(0)">Erase</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="lbl">Session</div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="val" id="st-solved">0</div><div class="slbl">Solved</div></div>
+        <div class="stat-box"><div class="val" id="st-best">--</div><div class="slbl">Best</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Game Over Overlay -->
+<div id="overlay">
+  <div class="go-card">
+    <div class="icon">💀</div>
+    <h2>Game Over</h2>
+    <p>You made 4 mistakes.<br>Better luck next time!</p>
+    <button class="btn primary" onclick="document.getElementById('overlay').classList.remove('show'); newGame();">New Puzzle</button>
+  </div>
+</div>
+
+<footer>Python Flask · Backtracking Algorithm · No external libraries</footer>
+
+<script src="/static/js/game.js"></script>
+</body>
+</html>
